@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Online Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/webApp.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="end" class="flex-center flex-column">
+            <h1 id="finalScore"></h1>
+            <form>
+                <input type="text" name="username" id="username" placeholder="Username" />
+                <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>
+                    Save
+                </button>
+            </form>
+            <a class="btn" href="test.html"> Try Again</a>
+            <a class="btn" href="/"> Home</a>
+        </div>
+    </div>
+    <script src="../script/result.js"></script>
+</body>
+
+</html>
