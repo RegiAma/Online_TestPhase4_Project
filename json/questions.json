@@ -1,0 +1,44 @@
+[
+    {
+      "question": "What is the purpose of the spring MVC module?",
+      "choice1": "To provide a web framework for building web applications",
+      "choice2": "To provide a data access framework for accessing databases",
+      "choice3": "To provide a caching framework for caching data",
+      "choice4": "To provide a security framework for securing web applications",
+      "answer": 1
+    },
+    {
+      "question": "What is the purpose of the Spring JDBC module? ?",
+      "choice1": "To provide a data access framework for accessing databases ",
+      "choice2": "To provide a web framework for building web applications ",
+      "choice3": "To provide aspect-oriented programming functionality",
+      "choice4": "To provide caching functionality",
+      "answer": 1
+    },
+    {
+      "question": "What is a servlet in Java?",
+      "choice1": " A programming language ",
+      "choice2": " A scripting language",
+      "choice3": "A server-side technology for Java web applications ",
+      "choice4": "A database management system",
+      "answer": 3
+    },
+    {
+      "question": "Which servlet API method is called before a servlet instance is destroyed?",
+      "choice1": " init() ",
+      "choice2": "destroy()",
+      "choice3": "service() ",
+      "choice4": "doGet() ",
+      "answer": 4
+    },
+    
+    {
+      "question": "What is the default scope of JSP variables?",
+      "choice1": "Request scope",
+      "choice2": "Session scope ",
+      "choice3": "Application scope",
+      "choice4": "Page Scope",
+      "answer": 4
+    }
+    
+  ]
