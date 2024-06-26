@@ -8,7 +8,7 @@
       "answer": 1
     },
     {
-      "question": "What is the purpose of the Spring JDBC module? ?",
+      "question": "What is the purpose of the Spring JDBC module?",
       "choice1": "To provide a data access framework for accessing databases ",
       "choice2": "To provide a web framework for building web applications ",
       "choice3": "To provide aspect-oriented programming functionality",

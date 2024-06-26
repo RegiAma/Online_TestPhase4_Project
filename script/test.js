@@ -2,24 +2,22 @@ const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const questionCounterText = document.getElementById("questionCounter");
 const scoreText = document.getElementById("score");
+const nextBtn = document.getElementById("nextBtn");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
-let availableQuesions = [];
+let availableQuestions = [];
 
 let questions = [];
 fetch("../json/questions.json")
-  .then(res => {
-    return res.json();
-  })
+  .then(res => res.json())
   .then(loadedQuestions => {
     console.log(loadedQuestions);
     questions = loadedQuestions;
     startQuiz();
   });
-
 
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 5;
@@ -27,20 +25,20 @@ const MAX_QUESTIONS = 5;
 startQuiz = () => {
   questionCounter = 0;
   score = 0;
-  availableQuesions = [...questions];
+  availableQuestions = [...questions];
   getNewQuestion();
 };
 
 getNewQuestion = () => {
-  if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+  if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     localStorage.setItem('mostRecentScore', score);
-    return window.location.assign("../html/test.html");
+    return window.location.assign("../html/end.html");
   }
   questionCounter++;
   questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
 
-  const questionIndex = Math.floor(Math.random() * availableQuesions.length);
-  currentQuestion = availableQuesions[questionIndex];
+  const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+  currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
 
   choices.forEach(choice => {
@@ -48,8 +46,9 @@ getNewQuestion = () => {
     choice.innerText = currentQuestion["choice" + number];
   });
 
-  availableQuesions.splice(questionIndex, 1);
+  availableQuestions.splice(questionIndex, 1);
   acceptingAnswers = true;
+  nextBtn.disabled = true;
 };
 
 choices.forEach(choice => {
@@ -60,24 +59,24 @@ choices.forEach(choice => {
     const selectedChoice = e.target;
     const selectedAnswer = selectedChoice.dataset["number"];
 
-    const classToApply =
-      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
-
-    setTimeout(() => {
-      selectedChoice.parentElement.classList.remove(classToApply);
-      getNewQuestion();
-    }, 400);
+    nextBtn.disabled = false;
   });
+});
+
+nextBtn.addEventListener("click", () => {
+  getNewQuestion();
 });
 
 incrementScore = num => {
   score += num;
   scoreText.innerText = score;
 };
+
 
